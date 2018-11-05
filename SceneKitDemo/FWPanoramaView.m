@@ -10,11 +10,16 @@
 #import <CoreMotion/CoreMotion.h>
 #import "Masonry.h"
 #import <GLKit/GLKit.h>
+#import <AVKit/AVKit.h>
 
 @interface FWPanoramaView()<SCNSceneRendererDelegate>
 
 @property (nonatomic, strong) SCNView *scnView;
 @property (nonatomic, strong) FWPanoramaConfig *config;
+
+@property (nonatomic, strong) SKScene *skScene;
+@property (nonatomic, strong) AVPlayer *player;
+@property (nonatomic, strong) SKVideoNode *videoNode;
 
 @property (nonatomic, strong) SCNNode *sphereNode;
 @property (nonatomic, strong) SCNCamera *camera;
@@ -101,7 +106,7 @@
     // 自动移动
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(autoOrientation)];
     [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-    _displayLink.paused = _config.autoEnabled;
+    _displayLink.paused = !_config.autoEnabled;
 
     [self setNodeHidden:YES];
 }
@@ -113,9 +118,26 @@
     _sphereNode = [SCNNode node]; // 节点
     _sphereNode.geometry = sphere;
     _sphereNode.position = SCNVector3Make(0, 0, 0);
+    
     // 渲染图片
     sphere.firstMaterial.diffuse.contents = _config.contents;
     [_scnView.scene.rootNode addChildNode:_sphereNode];
+    
+    // 渲染视频
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"360" ofType:@"mp4"];
+//    NSURL *url = [NSURL fileURLWithPath:path];
+//     AVPlayerItem *item = [AVPlayerItem playerItemWithURL:url];
+//     _player = [AVPlayer playerWithPlayerItem:item];
+//    [_player play];
+//
+//    _videoNode = [[SKVideoNode alloc]initWithAVPlayer:_player]; // 播放器节点
+//    _videoNode.size = CGSizeMake(self.frame.size.width, self.frame.size.height);
+//    _videoNode.position = CGPointMake(_videoNode.size.width / 2, _videoNode.size.height / 2);
+//    _skScene = [SKScene sceneWithSize:_videoNode.size];
+//    _skScene.scaleMode = SKSceneScaleModeAspectFit;
+//    [_skScene addChild:_videoNode];
+//    sphere.firstMaterial.diffuse.contents = _skScene;
+//    [_scnView.scene.rootNode addChildNode:_sphereNode];
 }
 
 - (void)createCamera {
@@ -391,7 +413,7 @@
     }
     [self setNodeHidden:displayMode == FWPanoramaDisplayMode360];
     [self setGestureEnabled:displayMode == FWPanoramaDisplayMode360];
-    _displayLink.paused = displayMode == FWPanoramaDisplayModeVR || _config.autoEnabled;
+    _displayLink.paused = displayMode == FWPanoramaDisplayModeVR || !_config.autoEnabled;
 }
 
 - (void)switchAutoEnabled:(BOOL)enabled {

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SceneKit/SceneKit.h>
 #import "FWPanoramaConfig.h"
+#import <SpriteKit/SpriteKit.h>
 
 @class FWPanoramaView;
 

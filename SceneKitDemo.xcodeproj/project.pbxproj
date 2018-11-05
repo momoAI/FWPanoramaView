@@ -37,6 +37,7 @@
 		DFAE6AA721490AF000D44C7F /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAE6A9B21490AF000D44C7F /* ViewController+MASAdditions.m */; };
 		DFAE6AA821490AF000D44C7F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DFAE6A9C21490AF000D44C7F /* README.md */; };
 		DFAE6AB5214A0E1C00D44C7F /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = DFAE6AB4214A0E1B00D44C7F /* 1.png */; };
+		FE542B08219091F900E9D629 /* 360.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FE542B07219091F900E9D629 /* 360.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		DFAE6A9B21490AF000D44C7F /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		DFAE6A9C21490AF000D44C7F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DFAE6AB4214A0E1B00D44C7F /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		FE542B07219091F900E9D629 /* 360.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 360.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		DF381B0421426B7700D5BD1C /* SceneKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FE542B07219091F900E9D629 /* 360.mp4 */,
 				DFAE6AB4214A0E1B00D44C7F /* 1.png */,
 				DF8A562621539DFC0058C0DA /* 4.jpg */,
 				DF8A56302153A5390058C0DA /* 11.png */,
@@ -364,6 +367,7 @@
 				DF8A56352153A53A0058C0DA /* 13.png in Resources */,
 				DF381B0D21426B7700D5BD1C /* Main.storyboard in Resources */,
 				DFAE6A9D21490AF000D44C7F /* LICENSE in Resources */,
+				FE542B08219091F900E9D629 /* 360.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
