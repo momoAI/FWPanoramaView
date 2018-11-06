@@ -212,6 +212,24 @@
     }];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    // 获取到手势的对象
+    UITouch *touch = [touches allObjects].firstObject;
+    
+    // 手势在SCNView中的位置
+    CGPoint touchPoint = [touch locationInView:self.scnView];
+    
+    // 该方法会返回一个SCNHitTestResult数组，这个数组中每个元素的node都包含了指定的点
+    NSArray *hitResults = [self.scnView hitTest:touchPoint options:nil];
+    if (hitResults.count > 0) {
+        SCNHitTestResult *hit = [hitResults firstObject];
+        SCNNode *node = hit.node;
+        if (node == _overlayNode) {
+            NSLog(@"hit node");
+        }
+    }
+}
+
 - (void)addGesture {
     self.pinchGesture = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchGesture:)];
     self.panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGesture:)];
