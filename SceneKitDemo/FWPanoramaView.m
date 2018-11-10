@@ -123,6 +123,15 @@
     sphere.firstMaterial.diffuse.contents = _config.contents;
     [_scnView.scene.rootNode addChildNode:_sphereNode];
     
+    // 翻转纹理坐标
+    // 1.
+    sphere.firstMaterial.diffuse.contentsTransform = SCNMatrix4MakeScale(-1, 1, 1);
+    sphere.firstMaterial.diffuse.wrapS = SCNWrapModeRepeat;
+    sphere.firstMaterial.diffuse.wrapT = SCNWrapModeRepeat;
+    // 2.
+//    sphere.firstMaterial.diffuse.contentsTransform = SCNMatrix4MakeScale(-1, 1, 1);
+//    sphere.firstMaterial.diffuse.contentsTransform = SCNMatrix4Translate(sphere.firstMaterial.diffuse.contentsTransform, 1, 0, 0);
+    
     // 渲染视频
 //    NSString *path = [[NSBundle mainBundle] pathForResource:@"360" ofType:@"mp4"];
 //    NSURL *url = [NSURL fileURLWithPath:path];
@@ -224,8 +233,10 @@
     if (hitResults.count > 0) {
         SCNHitTestResult *hit = [hitResults firstObject];
         SCNNode *node = hit.node;
-        if (node == _overlayNode) {
-            NSLog(@"hit node");
+        if (node == _preNode) {
+            NSLog(@"hit prenode");
+        }else if (node == _nextNode) {
+            NSLog(@"hit nextnode");
         }
     }
 }
